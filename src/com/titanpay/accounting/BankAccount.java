@@ -1,9 +1,9 @@
 package com.titanpay.accounting;
 
 public class BankAccount {
-	String bankName;
-	int routingNumber;
-	int accountId;
+	private String bankName;
+	private int routingNumber;
+	private int accountId;
 	
 	public BankAccount(String bankName, int routingNumber, int accountId)
 	{

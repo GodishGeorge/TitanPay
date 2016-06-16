@@ -1,27 +1,36 @@
 package com.titanpay.accounting;
 
-public class Salaried_Employee {
+import java.util.ArrayList;
+import java.util.Date;
+
+public class SalariedEmployee extends Employee implements Payable {
+	ArrayList<Receipt> receipt = new ArrayList<Receipt>();
+	private double salary;
+	private double commissionRate;
+
 	
-	int employeeId;
-	String firstName;
-	String lastName;
-	double salary;
-	double commissionRate;
-	double weeklyDues;
-	
-	public Salaried_Employee(int employeeId, String firstName, String lastName, 
+	public SalariedEmployee(int employeeId, String firstName, String lastName, 
 			double salary, double commissionRate, double weeklyDues)
 	{
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		super (employeeId, firstName, lastName, weeklyDues);
 		this.salary = salary;
 		this.commissionRate = commissionRate;
-		this.weeklyDues = weeklyDues;
 	}
 	
-	public String getFullName()
+	public void makeSale(double amt)
 	{
-		return lastName + ", " + firstName;
+		receipt.add(new Receipt(new Date(), 0));
+	}
+	
+	public double pay(Date startDate, Date endDate)
+	{
+		for (Receipt r : receipt)
+		{
+			if (r.getDate().after(startDate) == startDate) && 
+			(r.getDate().before(endDate) == endDate)
+			{
+				double pay = r.makeSale(commissionRate);
+			}
+		}
 	}
 }

@@ -2,11 +2,11 @@ package com.titanpay.accounting;
 import java.util.Date;
 
 public class TimeCard {
-	String date;
-	long startTime = new Date().getTime();
-	long endTime = new Date().getTime();
+	private Date date;
+	private double startTime = new Date().getTime();
+	private double endTime = new Date().getTime();
 	
-	public TimeCard(String date, long startTime, long endTime)
+	public TimeCard(Date date, double startTime, double endTime)
 	{
 		this.date = date;
 		this.startTime = startTime;
@@ -15,7 +15,7 @@ public class TimeCard {
 	
 	public double calculateDailyPay(double rate)
 	{
-		long hours = endTime - startTime;
+		double hours = endTime - startTime;
 		double hoursWorked = ((hours / (1000 * 60 * 60)) % 24); 
 		double overTime = hoursWorked - 8;
 		double overTimePay = (rate * 1.5) * overTime;
@@ -30,5 +30,29 @@ public class TimeCard {
 			double totalPay = hoursWorked * rate;
 			return totalPay;
 		}
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public double getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(double startTime) {
+		this.startTime = startTime;
+	}
+
+	public double getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(double endTime) {
+		this.endTime = endTime;
 	}
 }

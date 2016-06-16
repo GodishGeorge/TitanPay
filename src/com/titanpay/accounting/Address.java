@@ -1,10 +1,10 @@
 package com.titanpay.accounting;
 
 public class Address {
-	String streetAddress;
-	String city;
-	String state;
-	int zipCode;
+	private String streetAddress;
+	private String city;
+	private String state;
+	private int zipCode;
 	
 	public Address(String streetAddress, String city, String state, int zipCode)
 	{
@@ -14,7 +14,7 @@ public class Address {
 		this.zipCode = zipCode;
 	}
 	
-	public String getAddres()
+	public String getAddress()
 	{
 		return streetAddress + " " + city + ", " + state + " " + zipCode;
 	}
