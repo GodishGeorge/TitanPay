@@ -14,7 +14,7 @@ public class BankAccount {
 	
 	public String deposit(double amt)
 	{
-		return "Depositing $" + amt + " in " + bankName + "Account Number: "
-				+ accountId + " using Routing Number: " + routingNumber;
+		return "Depositing $" + amt + " in " + this.bankName + "Account Number: "
+				+ this.accountId + " using Routing Number: " + this.routingNumber;
 	}
 }
