@@ -2,15 +2,16 @@ package com.titanpay.accounting;
 
 public class PickUpPayment extends PaymentMethod{
 	private Employee fullName; 
+	private double amt; 
 	
-	public String pickUpPayment()
-	{
-		return "A check for $800.00 is waiting for " + fullName.getFullName()
-			+ " at the PostMaster";
+	public PickUpPayment(Employee fullName, double amt){
+		this.fullName = fullName;
+		this.amt = amt;
 	}
 
 	@Override
 	public void pay() {
-		
+		System.out.println("A check for " + amt + " is waiting for " + fullName.getFullName()
+			+ " at the PostMaster");
 	}
 }

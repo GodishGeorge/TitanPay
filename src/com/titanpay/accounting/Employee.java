@@ -5,6 +5,7 @@ public abstract class Employee {
 	private String firstName;
 	private String lastName;
 	private double weeklyDues;
+	private PaymentMethod methodOfPay;
 	
 	public Employee(int employeeId, String firstName, String lastName, 
 			double weeklyDues)
@@ -50,5 +51,14 @@ public abstract class Employee {
 
 	public void setWeeklyDues(double weeklyDues) {
 		this.weeklyDues = weeklyDues;
+	}
+	
+	public void setPaymentMethod(PaymentMethod method)
+	{
+		this.methodOfPay = method;
+	}
+	
+	public PaymentMethod getMethodOfPay(){
+		return this.methodOfPay;
 	}
 }

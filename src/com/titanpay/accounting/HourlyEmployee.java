@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class HourlyEmployee extends Employee implements Payable {
-	ArrayList<TimeCard> timeCards = new ArrayList<TimeCard>();
+	private ArrayList<TimeCard> timeCards;
 	private double hourlyRate;
 	
 	public HourlyEmployee(int employeeId, String firstName, String lastName, 
@@ -12,6 +12,7 @@ public class HourlyEmployee extends Employee implements Payable {
 	{
 		super(employeeId, firstName, lastName, weeklyDues);
 		this.hourlyRate = hourlyRate;
+		timeCards = new ArrayList<TimeCard>();
 	} 
 	
 	public void clockIn()
@@ -21,9 +22,12 @@ public class HourlyEmployee extends Employee implements Payable {
 	
 	public void clockOut()
 	{
+		Date currentDt = new Date();
 		for (TimeCard t : timeCards)
 		{
-			if (t.getDate() == t.getDate())
+			if (t.getDate().getMonth() == currentDt.getMonth()
+					&& t.getDate().getDay() == currentDt.getDay()
+					&& t.getDate().getYear() == currentDt.getYear())
 			{
 				double endTime = new Date().getTime();
 				t.setEndTime(endTime);
@@ -33,14 +37,16 @@ public class HourlyEmployee extends Employee implements Payable {
 	
 	public double pay(Date startDate, Date endDate)
 	{
-		
+		double pay = 0.0;
 		for (TimeCard t : timeCards)
 		{
-			if (t.getDate().after(startDate) == startDate) && 
-			(t.getDate().before(endDate) == endDate)
+			if (t.getDate().after(startDate) && 
+			t.getDate().before(endDate))
 			{
-				double pay = t.calculateDailyPay(hourlyRate);
+				pay += t.calculateDailyPay(hourlyRate);
 			}
 		}
+		this.getMethodOfPay().pay();
+		return pay;
 	}
 }

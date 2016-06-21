@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SalariedEmployee extends Employee implements Payable {
-	ArrayList<Receipt> receipt = new ArrayList<Receipt>();
+	private ArrayList<Receipt> receipt;
 	private double salary;
 	private double commissionRate;
 
@@ -15,6 +15,7 @@ public class SalariedEmployee extends Employee implements Payable {
 		super (employeeId, firstName, lastName, weeklyDues);
 		this.salary = salary;
 		this.commissionRate = commissionRate;
+		receipt = new ArrayList<Receipt>();
 	}
 	
 	public void makeSale(double amt)
@@ -24,13 +25,16 @@ public class SalariedEmployee extends Employee implements Payable {
 	
 	public double pay(Date startDate, Date endDate)
 	{
+		double pay = 0.0;
 		for (Receipt r : receipt)
 		{
-			if (r.getDate().after(startDate) == startDate) && 
-			(r.getDate().before(endDate) == endDate)
-			{
-				double pay = r.makeSale(commissionRate);
+			if (r.getDate().after(startDate) && 
+			r.getDate().before(endDate))
+			{	
+				pay += r.calculateCommission(commissionRate);
 			}
 		}
+		this.getMethodOfPay().pay();
+		return pay;
 	}
 }
