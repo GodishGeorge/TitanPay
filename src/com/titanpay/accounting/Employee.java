@@ -4,16 +4,16 @@ public abstract class Employee {
 	private int employeeId;
 	private String firstName;
 	private String lastName;
-	private double weeklyDues;
+	private double unionDues;
 	private PaymentMethod methodOfPay;
 	
 	public Employee(int employeeId, String firstName, String lastName, 
-			double weeklyDues)
+			double unionDues)
 	{
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.weeklyDues = weeklyDues;
+		this.unionDues = unionDues;
 	}
 	
 	public String getFullName()
@@ -45,12 +45,12 @@ public abstract class Employee {
 		this.lastName = lastName;
 	}
 
-	public double getWeeklyDues() {
-		return weeklyDues;
+	public double getUnionDues() {
+		return unionDues;
 	}
 
-	public void setWeeklyDues(double weeklyDues) {
-		this.weeklyDues = weeklyDues;
+	public void setUnionDues(double unionDues) {
+		this.unionDues = unionDues;
 	}
 	
 	public void setPaymentMethod(PaymentMethod method)

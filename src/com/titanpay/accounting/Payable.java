@@ -5,7 +5,7 @@ import java.util.Date;
 public interface Payable {
 	
 	
-	double pay(Date startDate, Date endDate);
+	double pay(int employeeId, Date startDate, Date endDate);
 	
 }
   

@@ -1,11 +1,11 @@
 package com.titanpay.accounting;
 
 public class MailPayment extends PaymentMethod{
-	private Employee fullName;
+	private String fullName;
 	private Address address;
 	private double amt;
 	
-	public MailPayment(Employee fullName, Address address, double amt)
+	public MailPayment(String fullName, Address address, double amt)
 	{
 		this.fullName = fullName;
 		this.address = address;
@@ -15,7 +15,7 @@ public class MailPayment extends PaymentMethod{
 	@Override
 	public void pay() 
 	{
-		System.out.println("Mailing a check to " + fullName.getFullName() + " for "
-				+ amt + " to " + address.getAddress());
+		System.out.println("Mailing a check to " + fullName + " for "
+				+ amt + " to " + address);
 	}
 }

@@ -1,16 +1,16 @@
 package com.titanpay.accounting;
 
 public class DirectDepositPayment extends PaymentMethod{
-	private BankAccount directDeposit;
+	private BankAccount bankAccount;
 	private double amt;
 	
-	public DirectDepositPayment(BankAccount directDeposit, double amt){
-		this.directDeposit = directDeposit;
-		this.amt = amt;
+	public DirectDepositPayment(BankAccount bankAccount){
+		this.bankAccount = bankAccount;
+		
 	}
 	
 	@Override
 	public void pay() {
-		System.out.println(directDeposit.deposit(amt));
+		System.out.println(bankAccount.deposit(amt));
 	}
 }
